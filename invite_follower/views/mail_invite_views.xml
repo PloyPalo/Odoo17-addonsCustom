@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mail_wizard_invite_form_inherited" model="ir.ui.view">
+        <field name="name">mail.wizard.invite.form.inherited</field>
+        <field name="model">mail.wizard.invite</field>
+        <field name="inherit_id" ref="mail.mail_wizard_invite_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_ids']" position="attributes">
+                <attribute name="default_value">[(6, 0, [182, 179])]</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

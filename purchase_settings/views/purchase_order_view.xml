@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_order_form_inherit" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Edit invisible field partner_id when Field state == 'draft'-->
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="invisible">not show_partner_id</attribute>
+                <attribute name="required">show_partner_id</attribute>
+                <attribute name="force_save">1</attribute>
+            </xpath>
+            <!-- Edit required field partner_id -->
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="show_partner_id" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <div class="app_settings_block" data-string="Partner Names" id="partner_names">
+                    <h2>Product Standard Price Settings</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name=""/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="use_security_lead_time"/>
+                                <div class="text-muted">
+                                    คำนวนราคาสินค้ามาตรฐานโดยการ Fix ราคาสินค้า  
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16" attrs="{'invisible': [('use_security_lead_time','=',False)]}">
+                                        <span>ป้อนข้อมูลราคาสินค้าที่ต้องการบวกเพิ่ม</span>
+                                        <field name="" class="oe_inline"/> บาท
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name=""/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="use_security_lead_time"/>
+                                <div class="text-muted">
+                                    คำนวนราคาสินค้ามาตรฐานโดยกำหนด Percent ราคาสินค้า
+                                </div>
+                                <div class="content-group">
+                                    <div class="mt16" attrs="{'invisible': [('use_security_lead_time','=',False)]}">
+                                        <span>ป้อนข้อมูลราคาสินค้าที่ต้องการบวกเพิ่ม</span>
+                                        <field name="" class="oe_inline"/> บาท
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
+
+<!-- <div class="row mt16 o_settings_container" name="schedule_info">
+    <div class="col-12 col-lg-6 o_setting_box">
+        <div class="o_setting_left_pane">
+            <field name="use_security_lead_time"/>
+        </div>
+        <div class="o_setting_right_pane">
+            <label for="use_security_lead_time"/>
+            <div class="text-muted">
+                Schedule deliveries earlier to avoid delays
+            </div>
+            <div class="content-group">
+                <div class="mt16" attrs="{'invisible': [('use_security_lead_time','=',False)]}">
+                    <span>Move forward expected delivery dates by</span>
+                    <field name="security_lead_time" class="oe_inline"/> days
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

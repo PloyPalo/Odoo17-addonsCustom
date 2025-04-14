@@ -1,0 +1,30 @@
+<odoo>
+    <record id="project_access_view_tree" model="ir.ui.view">
+        <field name="name">project.custom.views.project.access.view.tree
+        </field>
+        <field name="model">project.access</field>
+        <field name="arch" type="xml">
+            <tree string="Access" editable="bottom" sample="1">
+                <field name="name"/>
+                <field name="is_admin"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_access_action" model="ir.actions.act_window">
+        <field name="name">Project Access</field>
+        <field name="res_model">project.access</field>
+        <field name="view_id" ref="project_access_view_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Project Access
+            </p>
+        </field>
+    </record>
+    <menuitem
+            id="menu_project_access"
+            name="Project Access"
+            action="project_access_action"
+            parent="project.menu_project_config"
+            sequence="1"/>
+</odoo>

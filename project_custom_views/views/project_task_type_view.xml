@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="task_type_edit"
+            model="ir.ui.view">
+        <field name="name">
+            project.task.type.view.form.inherit.project.custom.views
+        </field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_edit"/>
+        <field name="arch" type="xml">
+            <field name="project_ids" position="after">
+                <field name="project_task_access_ids" widget='many2many_tags'/>
+            </field>
+        </field>
+    </record>
+</odoo>

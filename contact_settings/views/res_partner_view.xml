@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Search View -->
+    <record id="view_res_partner_filter" model="ir.ui.view">
+        <field name="name">res.partner.select</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='group_company']" position="before">
+                <filter
+                    name="group_company_type"
+                    string="Legal Form"
+                    domain="[('is_company', '=', True)]"
+                    context="{'group_by': 'partner_company_type_id'}"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="partner_firstname.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Name fields section -->
+            <xpath expr="//h1" position="replace">
+                <h1>
+                    <div class="d-flex">
+                        <field name="title" 
+                            placeholder="Title" 
+                            class="o_address_title me-2" 
+                            options='{"no_open": True}' 
+                            invisible="is_company"/>
+                        <field name="name" readonly="1"/>
+                    </div>
+                </h1>
+            </xpath>
+
+            <xpath expr="//div[hasclass('oe_edit_only')]//field[@name='firstname']" position="after">
+                <field name="lastname" position="move"/>
+            </xpath>
+
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </xpath>
+
+            <xpath expr="//h1//field[@name='name']/.." position="after">
+                <div class="oe_edit_only" invisible="not is_company">
+                    <field 
+                        name="name_company" 
+                        placeholder="Company name"
+                        required="is_company"
+                        invisible="not is_company"
+                    />
+                </div>
+            </xpath>
+
+            <!-- Address format section -->
+            <xpath expr="//div[@class='o_address_format']" position="replace">
+                <div class="o_address_format">
+                    <div class="row">
+                        <div class="col-6">
+                            <field name="country_id" placeholder="Country" class="o_address_country" 
+                                options="{'no_open': True, 'no_create': True}" readonly="type == 'contact' and parent_id"/>
+                        </div>
+                        <div class="col-6">
+                            <xpath expr="//field[@name='country_id']" position="after">
+                                <field name="state_id" placeholder="Province" class="o_address_state" 
+                                domain="[('country_id', '=', country_id)]" readonly="type == 'contact' and parent_id"/>
+                            </xpath>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-6">
+                            <field name="district_id" placeholder="District" class="o_address_district"
+                                domain="[('state_id', '=', state_id)]" readonly="type == 'contact' and parent_id"/>
+                        </div>
+                        <div class="col-6">
+                            <field name="subdistrict_id" placeholder="SubDistrict" class="o_address_subdistrict"
+                                domain="[('district_id', '=', district_id)]" readonly="type == 'contact' and parent_id"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <field name="house_no" placeholder="House No" class="o_address_house"/> 
+                        </div>
+                        <div class="col-6">
+                            <field name="moo" placeholder="Moo" class="o_address_village"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <field name="villa" placeholder="Villa" class="o_address_villa"/>
+                        </div>
+                        <div class="col-6">
+                            <field name="alley" placeholder="Alley" class="o_address_alley"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <field name="sub_alley" placeholder="Sub Alley" class="o_address_suballey"/>
+                        </div>
+                        <div class="col-6">
+                            <field name="street" placeholder="Street" class="o_address_street"/> 
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <field name="building" placeholder="Building" class="o_address_building"/>
+                        </div>
+                        <div class="col-6">
+                            <field name="floor" placeholder="Floor" class="o_address_floor"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <field name="room_no" placeholder="Room No" class="o_address_room"/>
+                        </div>
+                        <div class="col-6">
+                            <field name="zip" placeholder="ZIP" class="o_address_zip" readonly="0" 
+                                    force_save="1" invisible_modifier="OR(country_id != %(base.th)d, subdistrict_id == False)"/>                
+                        </div>
+                    </div>
+
+                    <!-- Hidden fields -->
+                    <field name="street2" invisible="1"/>
+                    <field name="city" invisible="1"/>
+                </div>
+            </xpath>
+            
+            <!-- Invisible State Field -->
+            <xpath expr="//field[@name='country_id']" position="after">
+                <field name="state_id" placeholder="Province" class="o_address_state"
+                       domain="[('country_id', '=', country_id)]" readonly="type == 'contact' and parent_id" invisible="1"/>
+            </xpath>
+
+            <!-- Branch field section -->
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="branch" string="Branch" placeholder="Branch, e.g., 00000"/>
+            </xpath>
+
+            <!-- Invisible Title Field -->
+            <xpath expr="//field[@name='website']/following::field[@name='title']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+             <!-- Contact & Address Tab -->
+            <xpath expr="//div[@class='o_address_format'][@name='div_address']" position="replace">
+                <div class="o_address_format" name="div_address">
+                    <div class="row">
+                        <div class="col-12">
+                            <field name="country_id" placeholder="Country" class="o_address_country" 
+                                options="{'no_open': True, 'no_create': True}" readonly="type == 'contact' and parent_id"/>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-6">
+                           <field name="district_id" placeholder="District" class="o_address_district"
+                                domain="[('state_id', '=', state_id)]" readonly="type == 'contact' and parent_id"/>
+                        </div>
+                        <div class="col-6">
+                           <field name="subdistrict_id" placeholder="SubDistrict" class="o_address_subdistrict"
+                                domain="[('district_id', '=', district_id)]" readonly="type == 'contact' and parent_id"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <field name="house_no" placeholder="House No" class="o_address_house"/> 
+                        </div>
+                        <div class="col-6">
+                            <field name="moo" placeholder="Moo" class="o_address_village"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <field name="villa" placeholder="Villa" class="o_address_villa"/>
+                        </div>
+                        <div class="col-6">
+                            <field name="alley" placeholder="Alley" class="o_address_alley"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <field name="sub_alley" placeholder="Sub Alley" class="o_address_suballey"/>
+                        </div>
+                        <div class="col-6">
+                            <field name="street" placeholder="Street" class="o_address_street"/> 
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <field name="building" placeholder="Building" class="o_address_building"/>
+                        </div>
+                        <div class="col-6">
+                            <field name="floor" placeholder="Floor" class="o_address_floor"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <field name="room_no" placeholder="Room No" class="o_address_room"/>
+                        </div>
+                        <div class="col-6">
+                            <xpath expr="//field[@name='room_no']" position="after">
+                                <field name="zip" placeholder="ZIP" class="o_address_zip" readonly="0" 
+                                    force_save="1" invisible_modifier="OR(country_id != %(base.th)d, subdistrict_id == False)"/>                
+                            </xpath>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <field name="state_id" placeholder="Province" class="o_address_state" 
+                                domain="[('country_id', '=', country_id)]" readonly="type == 'contact' and parent_id"/>
+                        </div>
+                        <div class="col-6">
+                        </div>
+                    </div>
+                    
+                    <!-- Hidden fields -->
+                    <field name="street2" invisible="1"/>
+                    <field name="city" invisible="1"/>
+                </div>
+            </xpath>   
+        </field>
+    </record>
+</odoo>

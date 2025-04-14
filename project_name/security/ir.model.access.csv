@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_user,project.project.user,model_project_project,base.group_user,1,0,0,0
+access_documents_folder_project,documents.folder.project,documents.model_documents_folder,project.group_project_user,1,1,1,1
+access_project_department_user,project_department_user_access,model_project_department,base.group_user,1,1,1,0
+access_project_department_manager,project_department_manager_access,model_project_department,project.group_project_manager,1,1,1,1
+access_project_group_user,project_group_user_access,model_project_group,base.group_user,1,1,1,0
+access_project_group_manager,project_group_manager_access,model_project_group,project.group_project_manager,1,1,1,1

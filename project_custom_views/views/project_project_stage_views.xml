@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_project_stage_view_form"
+            model="ir.ui.view">
+        <field name="name">
+            project.project.stage.view.form.inherit.project.custom.views
+        </field>
+        <field name="model">project.project.stage</field>
+        <field name="inherit_id"
+               ref="project.project_project_stage_view_form"/>
+        <field name="arch" type="xml">
+            <field name="fold" position="after">
+               <field name="project_access_ids" widget='many2many_tags'/>
+            </field>
+        </field>
+    </record>
+</odoo>

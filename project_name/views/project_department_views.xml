@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Project Department Tree View -->
+    <record id="project_department_view_tree" model="ir.ui.view">
+        <field name="name">project.department.view.tree</field>
+        <field name="model">project.department</field>
+        <field name="arch" type="xml">
+            <tree string="Project Departments" editable="top">
+                <field name="code"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Project Department Form View -->
+    <record id="project_department_view_form" model="ir.ui.view">
+        <field name="name">project.department.view.form</field>
+        <field name="model">project.department</field>
+        <field name="arch" type="xml">
+            <form string="Project Department">
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Project Department Action -->
+    <record id="project_department_action" model="ir.actions.act_window">
+        <field name="name">Project Departments</field>
+        <field name="res_model">project.department</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Project Departments
+            </p>
+        </field>
+    </record>
+</odoo>

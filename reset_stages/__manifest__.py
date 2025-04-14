@@ -1,0 +1,20 @@
+{
+    "name": "Reset Stages",
+    "version": "17.0.1.0.0",
+    "category": "Productivity",
+    "summary": """Reset the stages for deleting the records""",
+    "author": "Light up Total Solution Public Company Limited",
+    "website": "https://www.lightuptotal.co.th/",
+    "icon": "web/static/lts/icon.png",
+    "depends": ["base", "stock", "mrp", "purchase"],
+    "data": [
+        "views/stock_picking_views.xml",
+        "views/mrp_production_views.xml",
+        "views/purchase_order_views.xml",
+        "views/stock_quant_views.xml",
+    ],
+    "license": "LGPL-3",
+    "installable": True,
+    "application": False,
+    "auto_install": False,
+}

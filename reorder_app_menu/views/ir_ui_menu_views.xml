@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_menu_tree" model="ir.ui.view">
+            <field name="name">ir.ui.menu.tree</field>
+            <field name="model">ir.ui.menu</field>
+            <field name="arch" type="xml">
+                <tree string="Menu" editable="bottom">
+                    <field name="sequence" widget="handle"/>
+                    <field name="complete_name"/>
+                    <field name="action"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_menu_tree" model="ir.actions.act_window">
+            <field name="name">Menu Items</field>
+            <field name="res_model">ir.ui.menu</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_menu_tree"/>
+            <field name="domain">[('parent_id','=',False)]</field>
+        </record>
+
+        <menuitem id="menu_action_menu_tree" name="Reorder App Menu" parent="base.menu_administration" action="action_menu_tree" sequence="100"/>
+    </data>
+</odoo>

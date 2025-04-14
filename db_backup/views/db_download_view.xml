@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="view_db_download_form" model="ir.ui.view">
+        <field name="name">db.download.form</field>
+        <field name="model">db.download</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="backup_files" widget="selection"/>
+                    </group>
+                    <footer>
+                        <button name="download_backup" string="Download" type="object" class="btn-primary"/>
+                        <!-- ลบปุ่ม Refresh List -->
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_db_download" model="ir.actions.act_window">
+        <field name="name">Download Database</field>
+        <field name="res_model">db.download</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="view_db_download_form"/>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_db_download"
+              name="Download Database"
+              parent="menu_db_management"
+              action="action_db_download"
+              sequence="30"/>
+</odoo>

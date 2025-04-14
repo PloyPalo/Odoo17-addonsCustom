@@ -1,0 +1,6 @@
+Technical -> Database Management
+- Backup Database
+- Restore Database
+
+fix environment variable PGPASSWORD 
+fix scheduled

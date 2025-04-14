@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_db_restore_tree" model="ir.ui.view">
+        <field name="name">db.restore.tree</field>
+        <field name="model">db.restore</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="new_db_name"/>
+                <field name="server_file_path"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_db_restore_form" model="ir.ui.view">
+        <field name="name">db.restore.form</field>
+        <field name="model">db.restore</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_restore_database" 
+                            string="Restore Database" 
+                            type="object" 
+                            class="oe_highlight"
+                            confirm="Are you sure you want to restore this database? This action cannot be undone."/>
+                </header>
+                <sheet>
+                    <group>
+                        <group string="Restore Configuration">
+                            <field name="name"/>
+                            <field name="master_password" password="True"/>
+                            <field name="new_db_name" 
+                                   placeholder="Enter new database name..."/>
+                        </group>
+                        <group string="Backup File">
+                            <field name="server_file_path"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_db_restore" model="ir.actions.act_window">
+        <field name="name">Restore Database</field>
+        <field name="res_model">db.restore</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_db_restore"
+              name="Restore Database"
+              parent="menu_db_management"
+              action="action_db_restore"
+              sequence="20"/>
+</odoo>

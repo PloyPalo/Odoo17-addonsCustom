@@ -1,0 +1,31 @@
+<odoo>
+    <record id="project_task_access_view_tree" model="ir.ui.view">
+        <field name="name">project.custom.views.project.access.views.view.tree
+        </field>
+        <field name="model">project.task.access</field>
+        <field name="arch" type="xml">
+            <tree string="Access" editable="bottom" sample="1">
+                <field name="name"/>
+                <field name="is_admin"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_task_access_action" model="ir.actions.act_window">
+        <field name="name">Project Task Access</field>
+        <field name="res_model">project.task.access</field>
+        <field name="view_id" ref="project_task_access_view_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Project Access
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="menu_project_task_access"
+            name="Project Task Access"
+            action="project_task_access_action"
+            parent="project.menu_project_config"
+            sequence="2"/>
+</odoo>

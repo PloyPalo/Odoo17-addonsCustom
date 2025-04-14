@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Master Data for Project Groups -->
+    <record id="project_group_sod" model="project.group">
+        <field name="name">Software Development</field>
+        <field name="code">SOD</field>
+        <field name="department_id" ref="department_rd"/>
+    </record>
+    <record id="project_group_cls" model="project.group">
+        <field name="name">Cloud Solutions</field>
+        <field name="code">CLS</field>
+        <field name="department_id" ref="department_rd"/>
+    </record>
+    <record id="project_group_das" model="project.group">
+        <field name="name">Data Analytic and AI Solutions</field>
+        <field name="code">DAS</field>
+        <field name="department_id" ref="department_rd"/>
+    </record>
+    <record id="project_group_nss" model="project.group">
+        <field name="name">Networking and Security Services</field>
+        <field name="code">NSS</field>
+        <field name="department_id" ref="department_rd"/>
+    </record>
+    <record id="project_group_shs" model="project.group">
+        <field name="name">Software and Hardware Services</field>
+        <field name="code">SHS</field>
+        <field name="department_id" ref="department_rd"/>
+    </record>
+    <record id="project_group_css" model="project.group">
+        <field name="name">Customer Support Services</field>
+        <field name="code">CSS</field>
+        <field name="department_id" ref="department_rd"/>
+    </record>
+    <record id="project_group_suc" model="project.group">
+        <field name="name">Sub Contract</field>
+        <field name="code">SUC</field>
+        <field name="department_id" ref="department_rd"/>
+    </record>
+    <record id="project_group_lts" model="project.group">
+        <field name="name">Light Up Total Solutions</field>
+        <field name="code">LTS</field>
+        <field name="department_id" ref="department_rd"/>
+    </record>
+    <record id="project_group_hot" model="project.group">
+        <field name="name">Hotel</field>
+        <field name="code">HOT</field>
+        <field name="department_id" ref="department_sd"/>
+    </record>
+    <record id="project_group_res" model="project.group">
+        <field name="name">Restaurant</field>
+        <field name="code">RES</field>
+        <field name="department_id" ref="department_sd"/>
+    </record>
+    <record id="project_group_ret" model="project.group">
+        <field name="name">Retail Shop</field>
+        <field name="code">RET</field>
+        <field name="department_id" ref="department_sd"/>
+    </record>
+    <record id="project_group_cdc" model="project.group">
+        <field name="name">Commercial / Department / Community Mall</field>
+        <field name="code">CDC</field>
+        <field name="department_id" ref="department_sd"/>
+    </record>
+    <record id="project_group_off" model="project.group">
+        <field name="name">Office</field>
+        <field name="code">OFF</field>
+        <field name="department_id" ref="department_sd"/>
+    </record>
+    <record id="project_group_res" model="project.group">
+        <field name="name">Residence</field>
+        <field name="code">RES</field>
+        <field name="department_id" ref="department_sd"/>
+    </record>
+    <record id="project_group_faw" model="project.group">
+        <field name="name">Factory / Warehouse</field>
+        <field name="code">FAW</field>
+        <field name="department_id" ref="department_sd"/>
+    </record>
+    <record id="project_group_gov" model="project.group">
+        <field name="name">Government service</field>
+        <field name="code">GOV</field>
+        <field name="department_id" ref="department_sd"/>
+    </record>
+    <record id="project_group_sau" model="project.group">
+        <field name="name">School / University</field>
+        <field name="code">SAU</field>
+        <field name="department_id" ref="department_sd"/>
+    </record>
+    <record id="project_group_hos" model="project.group">
+        <field name="name">Hospital</field>
+        <field name="code">HOS</field>
+        <field name="department_id" ref="department_sd"/>
+    </record>
+    <record id="project_group_sta" model="project.group">
+        <field name="name">Stadium</field>
+        <field name="code">STA</field>
+        <field name="department_id" ref="department_sd"/>
+    </record>
+</odoo>

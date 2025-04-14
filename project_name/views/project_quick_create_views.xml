@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="quick_create_project_form_inherit" model="ir.ui.view">
+        <field name="name">project.project.quick.form.inherit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.quick_create_project_form"/>
+        <field name="arch" type="xml">
+            <!-- แทนที่ field name เดิม -->
+            <field name="name" position="replace">
+                <group>
+                    <field name="name" string="Project Name"/>
+                    <field name="department_id" widget="selection" required="1"/>
+                    <field name="project_group_id" 
+                                placeholder="Select Project Group" 
+                                domain="[('department_id', '=', department_id)]"/>
+                    <field name="customer_abbr"/>
+                    <field name="project_name" required="1"/>
+                    <field name="year" required="1"/>
+                </group>
+            </field>
+        </field>
+    </record>
+</odoo>

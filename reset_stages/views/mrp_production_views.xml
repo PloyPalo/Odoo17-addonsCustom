@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="mrp_production_form_view">
+        <field name="name">mrp.production.inherit.form.view.reset.stages</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_open_label_type']" position="after">
+                <button name="action_delete_mo" invisible="state == 'draft' or state == 'done' or state == 'cancel'"  
+                        string="Delete!" 
+                        type="object"
+                        class="oe_highlight" 
+                        confirm="Are you sure you want to delete this Manufacturing Order ?"
+                        groups="base.group_user"/>
+            </xpath>
+            <xpath expr="//button[@name='action_delete_mo']" position="after">
+                <button name="action_reset_draft" invisible="state == 'draft' or state == 'confirmed' or state == 'cancel'"  
+                        string="Cancel!" 
+                        type="object"
+                        class="oe_highlight" 
+                        groups="base.group_user"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

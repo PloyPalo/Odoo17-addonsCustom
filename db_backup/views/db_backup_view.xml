@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_db_backup_tree" model="ir.ui.view">
+        <field name="name">db.backup.tree</field>
+        <field name="model">db.backup</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="db_name"/>
+                <field name="backup_type"/>
+                <field name="schedule_interval" invisible="backup_type != 'scheduled'"/>
+                <field name="backup_time" invisible="backup_type != 'scheduled'"/>
+                <field name="next_backup" invisible="backup_type != 'scheduled'"/>
+                <field name="backup_dir"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_db_backup_form" model="ir.ui.view">
+        <field name="name">db.backup.form</field>
+        <field name="model">db.backup</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_backup_database" 
+                            string="Backup Now" 
+                            type="object" 
+                            class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group string="Backup Configuration">
+                            <field name="name" placeholder="Enter backup name..."/>
+                            <field name="db_name"/>
+                            <field name="backup_type"/>
+                            <field name="backup_dir" placeholder="D:\DB_Backup"/>
+                        </group>
+                        <group string="Schedule Settings" invisible="backup_type != 'scheduled'">
+                            <field name="schedule_interval" 
+                                   required="backup_type == 'scheduled'"/>
+                            <field name="backup_time" 
+                                   required="backup_type == 'scheduled'"/>
+                            <field name="week_day" 
+                                   invisible="schedule_interval != 'weekly'"
+                                   required="schedule_interval == 'weekly'"/>
+                            <field name="month_day" 
+                                   invisible="schedule_interval != 'monthly'"
+                                   required="schedule_interval == 'monthly'"/>
+                            <field name="next_backup" readonly="1"/>
+                        </group>
+                        <group string="PostgreSQL Connection">
+                            <field name="pg_dump_path" placeholder="e.g. C:\Postgres\bin\pg_dump.exe"/>
+                            <field name="filestore_path" placeholder="e.g. C:\Program Files\Odoo17\sessions\filestore"/>
+                            <field name="pg_host"/>
+                            <field name="pg_port"/>
+                            <field name="pg_user"/>
+                            <field name="pg_password" password="True"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_db_backup" model="ir.actions.act_window">
+        <field name="name">Backup Database</field>
+        <field name="res_model">db.backup</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top level menu -->
+    <menuitem id="menu_db_management"
+            name="Database Management"
+            parent="base.menu_custom"
+            sequence="100"/>
+
+    <!-- Sub menu -->
+    <menuitem id="menu_db_backup"
+            name="Backup Database"
+            parent="menu_db_management"
+            action="action_db_backup"
+            sequence="10"/>
+</odoo>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="admin_project_task_access"
+            model="project.task.access">
+        <field name="name">Admin</field>
+        <field name="is_admin">True</field>
+    </record>
+    <record id="clevel_project_task_access"
+            model="project.task.access">
+        <field name="name">C-Level</field>
+        <field name="is_admin">True</field>
+    </record>
+    <record id="sales_project_task_access"
+            model="project.task.access">
+        <field name="name">Sales</field>
+    </record>
+    <record id="designer_project_task_access"
+            model="project.task.access">
+        <field name="name">Designer</field>
+    </record>
+    <record id="product_project_task_access"
+            model="project.task.access">
+        <field name="name">Product</field>
+    </record>
+    <record id="salesco_project_task_access"
+            model="project.task.access">
+        <field name="name">Sales Co</field>
+    </record>
+    <record id="purchase_project_task_access"
+            model="project.task.access">
+        <field name="name">Purchase</field>
+    </record>
+    <record id="warehouse_project_task_access"
+            model="project.task.access">
+        <field name="name">Warehouse</field>
+    </record>
+    <record id="it_project_task_access"
+            model="project.task.access">
+        <field name="name">IT</field>
+    </record>
+</odoo>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Create action with all views -->
+    <record id="open_view_project_all_group_stage" model="ir.actions.act_window">
+        <field name="name">Projects</field>
+        <field name="res_model">project.project</field>
+        <field name="view_mode">kanban,list,form,gantt,calendar,activity,graph</field>
+        <field name="search_view_id" ref="project.view_project_project_filter"/>
+        <field name="context">{
+            'search_default_my_favorite_projects': 1,
+            'search_default_in_progress': 1
+        }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new project
+            </p>
+        </field>
+    </record>
+
+    <!-- Inherit List View -->
+    <record id="view_project_list_inherit" model="ir.ui.view">
+        <field name="name">project.project.list.inherit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project"/>
+        <field name="arch" type="xml">
+            <tree position="attributes">
+                <attribute name="default_group_by">stage_id</attribute>
+                <attribute name="decoration-bf">message_needaction==True</attribute>
+                <attribute name="decoration-danger">date and date&lt;current_date</attribute>
+            </tree>
+            <field name="name" position="after">
+                <field name="date" optional="show"/>
+                <field name="user_id" optional="show"/>
+                <field name="partner_id" optional="show"/>
+                <field name="message_needaction" invisible="1"/>
+                <field name="active" invisible="1"/>
+                <field name="is_favorite" widget="boolean_favorite" optional="show"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Inherit Kanban View -->
+    <record id="view_project_kanban_inherit" model="ir.ui.view">
+        <field name="name">project.project.kanban.inherit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban"/>
+        <field name="arch" type="xml">
+            <kanban position="attributes">
+                <attribute name="default_group_by">stage_id</attribute>
+                <attribute name="quick_create">true</attribute>
+                <attribute name="records_draggable">true</attribute>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Menu item -->
+    <menuitem
+        id="menu_projects_group_stage"
+        name="Projects"
+        action="open_view_project_all_group_stage"
+        parent="project.menu_projects_group_stage"
+        sequence="2"/>
+    <menuitem
+        id="menu_project_department"
+        name="Project Departments"
+        action="project_department_action"
+        parent="project.menu_projects_group_stage"
+        sequence="3"/>
+        <!-- ใส่ชื่อโมดูลที่มี menu หลัก -->
+    <menuitem
+        id="menu_project_group"
+        name="Project Groups"
+        action="project_group_action"
+        parent="project.menu_projects_group_stage" 
+        sequence="4"/>
+        <!-- menu หลักของ project module -->
+</odoo>

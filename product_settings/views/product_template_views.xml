@@ -1,0 +1,29 @@
+<odoo>
+    <record id="view_product_form_inherit" model="ir.ui.view">
+        <field name="name">product.template.form.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='oe_title']/h1" position="after">
+               <div class="row">
+                    <div class="col-6">
+                        <label for="product_external_code" string="Product External Code"/>
+                    </div>
+                    <div class="col-6">
+                        <label for="product_internal_code" string="Product Internal Code"/>
+                    </div>
+                </div>
+                <h1>
+                    <div class="d-flex">
+                        <field name="product_external_code" 
+                            placeholder="e.g. SL-WL-812B"
+                            decoration-danger="product_external_code and ' ' in product_external_code"
+                            class="me-3"/> 
+                        <field name="product_internal_code" 
+                            placeholder="e.g. EW23410"/>
+                    </div>
+                </h1>
+           </xpath>
+        </field>
+    </record>
+</odoo> 

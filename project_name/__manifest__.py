@@ -1,0 +1,32 @@
+{
+    'name': 'Project Name',
+    'version': '17.0.1.0.0',
+    'category': 'Project',
+    'summary': 'Project Name',
+    'author': 'Light up Total Solution Public Company Limited',
+    'website': 'https://www.lightuptotal.co.th/',
+    'license': 'LGPL-3',
+    'icon': 'web/static/lts/icon.png',
+    'depends': [
+        'base',
+        'web',
+        'project',
+        'documents',
+        'analytic'
+    ],
+    'data': [
+        'security/ir.model.access.csv',
+        'data/project_department_data.xml',
+        'data/project_group_data.xml',
+        'views/project_department_views.xml',
+        'views/project_group_views.xml',
+        'views/project_project_simplified_views.xml',
+        'views/project_project_edit_views.xml',
+        'views/project_quick_create_views.xml',
+        'views/project_menu.xml',
+    ],
+    'assets': {},
+    'installable': True,
+    'application': False,
+    'auto_install': False,
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="project_project_edit_name_view_form" model="ir.ui.view">
+        <field name="name">project.project.edit.name.view.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="before">
+                <field name="label_tasks" string="Name of the Tasks" placeholder="e.g. Tasks"/>
+                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </xpath>
+            <xpath expr="//field[@name='label_tasks']" position="before">
+                <field name="department_id" placeholder="Select Department"/>
+                <field name="project_group_id" 
+                                placeholder="Select Project Group" 
+                                domain="[('department_id', '=', department_id)]"
+                                options="{'no_create': True}"/>
+                <field name="customer_abbr" string="Customer Abbreviation"/>
+                <field name="project_name" string="Project Name"/>
+                <field name="year"/>
+            </xpath>
+            <!-- ซ่อน fields ในตำแหน่งเดิม -->
+            <xpath expr="//group/group/field[@name='tag_ids']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//group/group/field[@name='label_tasks']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hr_employee_tree_list_view" model="ir.ui.view">
+        <field name="name">hr.employee.tree</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <field name="name" position="attributes">
+                <attribute name="string">Employee Name (EN)</attribute>
+            </field>
+            <field name="name" position="before">
+                <field name="employee_code" optional="show"/>
+            </field>
+            <field name="name" position="after">
+                <field name="name_th" optional="show"/>
+                <field name="nick_name" optional="show"/>
+            </field>
+        </field>
+    </record>
+</odoo>
