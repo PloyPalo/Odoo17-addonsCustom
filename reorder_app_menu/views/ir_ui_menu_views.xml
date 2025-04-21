@@ -24,6 +24,6 @@
         <menuitem id="menu_action_menu_tree" name="Menu Items" parent="menu_reorder_app" action="action_menu_tree" sequence="10"/>
         
         <!-- เมนูย่อย 2: เรียงเมนูตามตัวอักษร -->
-        <menuitem id="menu_sort_alphabetically" name="เรียงเมนูตามตัวอักษร" parent="menu_reorder_app" action="action_sort_menus" sequence="20"/>
+        <menuitem id="menu_sort_alphabetically" name="Sort Menus Alphabetically" parent="menu_reorder_app" action="action_sort_menus" sequence="20"/>
     </data>
 </odoo>
