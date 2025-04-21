@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_standard_cost_history_user,product.standard.cost.history.user,model_product_standard_cost_history,base.group_user,1,0,0,0
+access_product_standard_cost_history_stock_user,product.standard.cost.history.stock.user,model_product_standard_cost_history,stock.group_stock_user,1,0,0,0
+access_product_standard_cost_history_stock_manager,product.standard.cost.history.stock.manager,model_product_standard_cost_history,stock.group_stock_manager,1,1,1,1
 access_standard_cost_wizard,access.standard.cost.wizard,model_standard_cost_wizard,base.group_user,1,1,1,1

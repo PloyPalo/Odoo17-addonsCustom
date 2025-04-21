@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Standard Cost History Tree View (Read-only) -->
+    <record id="view_product_standard_cost_history_tree" model="ir.ui.view">
+        <field name="name">product.standard.cost.history.tree</field>
+        <field name="model">product.standard.cost.history</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="is_latest_record == True" editable="bottom">
+                <field name="date_updated" readonly="1"/>
+                <field name="std_cost" readonly="1"/>
+                <field name="std_cost_cal_type" readonly="1"/>
+                <field name="std_cost_cal_val" readonly="1"/>
+                <field name="create_uid" widget="many2one_avatar_user" readonly="1"/>
+                <field name="create_date" readonly="1"/>
+                <field name="write_uid" widget="many2one_avatar_user" readonly="1"/>
+                <field name="write_date" readonly="1"/>
+                <field name="is_latest_record" column_invisible="True"/>
+                <button name="action_choose_value" string="Choose" type="object" class="oe_highlight"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- Form View สำหรับดูรายละเอียด -->
+    <record id="view_product_standard_cost_history_form" model="ir.ui.view">
+        <field name="name">product.standard.cost.history.form</field>
+        <field name="model">product.standard.cost.history</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="product_tmpl_id" readonly="1"/>
+                            <field name="std_cost" readonly="1"/>
+                            <field name="std_cost_cal_type" readonly="1"/>
+                            <field name="std_cost_cal_val" readonly="1"/>
+                            <field name="date_updated" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="create_uid" readonly="1"/>
+                            <field name="create_date" readonly="1"/>
+                            <field name="write_uid" readonly="1"/>
+                            <field name="write_date" readonly="1"/>
+                            <field name="is_latest_record" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Action Window Definition -->
+    <record id="action_product_standard_cost_history" model="ir.actions.act_window">
+        <field name="name">Standard Cost History</field>
+        <field name="res_model">product.standard.cost.history</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_product_standard_cost_history_tree"/>
+    </record>
+</odoo>

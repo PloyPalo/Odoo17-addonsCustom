@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_document_form_inherit_ocr" model="ir.ui.view">
+        <field name="name">documents.document.form.inherit.ocr</field>
+        <field name="model">documents.document</field>
+        <field name="inherit_id" ref="documents.document_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <notebook attrs="{'invisible': [('attachment_id', '=', False)]}">
+                    <page string="OCR Data" name="ocr_data">
+                        <group>
+                            <field name="ocr_processed"/>
+                            <field name="invoice_id" readonly="1"/>
+                            <button name="action_process_ocr" string="Process with OCR" type="object" class="oe_highlight" attrs="{'invisible': [('ocr_processed', '=', True)]}"/>
+                        </group>
+                        <group string="OCR Results" attrs="{'invisible': [('ocr_processed', '=', False)]}">
+                            <field name="ocr_text" widget="html" nolabel="1" colspan="2"/>
+                        </group>
+                        <group string="Extracted Data" attrs="{'invisible': ['|', ('ocr_processed', '=', False), ('extracted_data', '=', False)]}">
+                            <field name="extracted_data" widget="html" nolabel="1" colspan="2"/>
+                        </group>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+</odoo>

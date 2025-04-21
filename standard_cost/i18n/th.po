@@ -1,0 +1,127 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* standard_cost
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-16 12:00+0000\n"
+"PO-Revision-Date: 2025-03-16 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: standard_cost
+#: model:ir.model.fields,field_description:standard_cost.field_product_template__std_cost
+#: model:ir.model.fields,field_description:standard_cost.field_product_standard_cost_history__std_cost
+#: model_terms:ir.ui.view,arch_db:standard_cost.product_standard_cost_form_view
+msgid "Standard Cost"
+msgstr "ต้นทุนมาตรฐาน"
+
+#. module: standard_cost
+#: model_terms:ir.ui.view,arch_db:standard_cost.view_standard_cost_wizard_form
+msgid "Calculate Standard Cost"
+msgstr "คำนวณต้นทุนมาตรฐาน"
+
+#. module: standard_cost
+#: model:ir.model.fields,field_description:standard_cost.field_product_template__std_cost_cal_val
+#: model:ir.model.fields,field_description:standard_cost.field_product_standard_cost_history__std_cost_cal_val
+msgid "Standard Cost Calculate Value"
+msgstr "ค่าในการคำนวณต้นทุนมาตรฐาน"
+
+#. module: standard_cost
+#: model:ir.model.fields,field_description:standard_cost.field_product_template__std_cost_cal_type
+#: model:ir.model.fields,field_description:standard_cost.field_product_standard_cost_history__std_cost_cal_type
+msgid "Standard Cost Calculate Type"
+msgstr "ประเภทการคำนวณต้นทุนมาตรฐาน"
+
+#. module: standard_cost
+#: model:ir.model.fields,field_description:standard_cost.field_standard_cost_wizard__std_cost_cal_type
+msgid "Standard Cost Calculate Type"
+msgstr "ประเภทการคำนวณต้นทุนมาตรฐาน"
+
+#. module: standard_cost
+#: model_terms:ir.ui.view,arch_db:standard_cost.view_standard_cost_wizard_form
+msgid "Standard Cost Calculate"
+msgstr "คำนวณต้นทุนมาตรฐาน"
+
+#. module: standard_cost
+#: model_terms:ir.ui.view,arch_db:standard_cost.view_product_standard_cost_history_tree
+#: model_terms:ir.ui.view,arch_db:standard_cost.view_product_standard_cost_history_form
+#: model:ir.actions.act_window,name:standard_cost.action_product_standard_cost_history
+msgid "Standard Cost History"
+msgstr "ประวัติต้นทุนมาตรฐาน"
+
+#. module: standard_cost
+#: model:ir.model.fields.selection,name:standard_cost.selection__product_template__std_cost_cal_type__0
+#: model:ir.model.fields.selection,name:standard_cost.selection__product_standard_cost_history__std_cost_cal_type__0
+#: model:ir.model.fields.selection,name:standard_cost.selection__standard_cost_wizard__std_cost_cal_type__0
+msgid "Percentage"
+msgstr "เปอร์เซ็นต์"
+
+#. module: standard_cost
+#: model:ir.model.fields.selection,name:standard_cost.selection__product_template__std_cost_cal_type__1
+#: model:ir.model.fields.selection,name:standard_cost.selection__product_standard_cost_history__std_cost_cal_type__1
+#: model:ir.model.fields.selection,name:standard_cost.selection__standard_cost_wizard__std_cost_cal_type__1
+msgid "Fixed"
+msgstr "ค่าคงที่"
+
+#. module: standard_cost
+#: model:ir.model.fields,field_description:standard_cost.field_product_standard_cost_history__date_updated
+msgid "Updated Date"
+msgstr "วันที่ปรับปรุง"
+
+#. module: standard_cost
+#: model:ir.model.fields,field_description:standard_cost.field_product_standard_cost_history__is_latest_record
+msgid "Latest Record"
+msgstr "บันทึกล่าสุด"
+
+#. module: standard_cost
+#: model:ir.model.fields,field_description:standard_cost.field_product_standard_cost_history__create_uid
+msgid "Created by"
+msgstr "สร้างโดย"
+
+#. module: standard_cost
+#: model:ir.model.fields,field_description:standard_cost.field_product_standard_cost_history__create_date
+msgid "Created on"
+msgstr "สร้างเมื่อ"
+
+#. module: standard_cost
+#: model_terms:ir.ui.view,arch_db:standard_cost.view_product_standard_cost_history_tree
+msgid "Last Updated by"
+msgstr "อัปเดตโดย"
+
+#. module: standard_cost
+#: model_terms:ir.ui.view,arch_db:standard_cost.view_product_standard_cost_history_tree
+msgid "Last Updated on"
+msgstr "อัปเดตเมื่อ"
+
+#. module: standard_cost
+#: model_terms:ir.ui.view,arch_db:standard_cost.view_standard_cost_wizard_form
+msgid "Save"
+msgstr "บันทึก"
+
+#. module: standard_cost
+#: model_terms:ir.ui.view,arch_db:standard_cost.view_standard_cost_wizard_form
+msgid "Cancel"
+msgstr "ยกเลิก"
+
+#. module: standard_cost
+#: model_terms:ir.ui.view,arch_db:standard_cost.view_product_standard_cost_history_tree
+msgid "Choose"
+msgstr "เลือก"
+
+#. module: standard_cost
+#: model:ir.model,name:standard_cost.model_product_template
+msgid "Product"
+msgstr "สินค้า"
+
+#. module: standard_cost
+#: model:ir.model,name:standard_cost.model_standard_cost_wizard
+msgid "Standard Cost Calculator"
+msgstr "คำนวณต้นทุนมาตรฐาน"

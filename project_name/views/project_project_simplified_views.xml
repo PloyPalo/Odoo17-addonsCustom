@@ -8,7 +8,7 @@
             <xpath expr="//div[hasclass('oe_title')]" position="after">
                 <group>
                     <group>
-                        <field name="department_id" placeholder="Select Department"/>
+                        <field name="department_id" placeholder="Select Department" options="{'no_create': True}"/>
                         <field name="customer_abbr" string="Customer Abbreviation"/>
                         <field name="year"/>
                     </group>

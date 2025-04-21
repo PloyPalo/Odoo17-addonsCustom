@@ -87,5 +87,7 @@ class DatabaseDownload(models.TransientModel):
                 'url': '/web/content/?model=db.download&id=%s&filename=%s&field=backup_file_content&download=true' % (self.id, self.backup_file_name),
                 'target': 'self',
             }
+            self.unlink()  # ลบ record หลังจากดาวน์โหลด
+            return action
         except Exception as e:
             raise UserError(_("Error downloading backup: %s") % str(e))

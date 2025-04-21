@@ -55,23 +55,37 @@
 
     <!-- Menu item -->
     <menuitem
+            id="menu_project_task_access"
+            name="Project Departments"
+            action="project_department_action"
+            parent="project.menu_project_config"
+            sequence="3"/>
+    <menuitem
+            id="menu_project_group"
+            name="Project Groups"
+            action="project_group_action"
+            parent="project.menu_project_config" 
+            sequence="4"/>
+
+    <!-- sub menu in project tab -->
+    <!-- <menuitem
         id="menu_projects_group_stage"
         name="Projects"
         action="open_view_project_all_group_stage"
         parent="project.menu_projects_group_stage"
-        sequence="2"/>
-    <menuitem
+        sequence="2"/> -->
+        
+    <!-- <menuitem
         id="menu_project_department"
         name="Project Departments"
         action="project_department_action"
         parent="project.menu_projects_group_stage"
-        sequence="3"/>
-        <!-- ใส่ชื่อโมดูลที่มี menu หลัก -->
-    <menuitem
+        sequence="3"/> -->
+
+    <!-- <menuitem
         id="menu_project_group"
         name="Project Groups"
         action="project_group_action"
         parent="project.menu_projects_group_stage" 
-        sequence="4"/>
-        <!-- menu หลักของ project module -->
+        sequence="4"/> -->
 </odoo>

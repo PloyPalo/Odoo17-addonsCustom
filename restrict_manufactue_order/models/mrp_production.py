@@ -20,5 +20,7 @@ class MrpProduction(models.Model):
                 )
                 raise ValidationError(
                     f"The following products have insufficient stock:\n{error_message}")
-        
+
         return super().action_confirm()
+
+

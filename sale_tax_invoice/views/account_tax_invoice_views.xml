@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_account_tax_invoice_form" model="ir.ui.view">
+        <field name="name">account.tax.invoice.form</field>
+        <field name="model">account.tax.invoice</field>
+        <field name="arch" type="xml">
+            <form string="Tax Invoice">
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="doc_no" readonly="1" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id" options="{'no_open': True, 'no_create': True}" />
+                            <field name="partner_tax_id" />
+                            <field name="tax_invoice_level" />
+                            <field name="company_id" />
+                            <field name="currency_id" invisible="1" />
+                        </group>
+                        <group>
+                            <field name="invoice_id" />
+                            <field name="invoice_date" />
+                            <field name="invoice_month" />
+                            <field name="sale_order_id" optional="show" />
+                            <field name="so_date" optional="show" />
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Tax Details" name="tax_details">
+                            <field name="line_ids">
+                                <tree string="Tax Lines" editable="bottom">
+                                    <field name="invoice_line_id" optional="hide"
+                                        attrs="{'column_invisible': [('parent.tax_invoice_level', '=', 'summary')]}" />
+                                    <field name="amount_line_vat" sum="Total VAT Base" />
+                                    <field name="amount_line_non_vat" sum="Total Non-VAT Base" />
+                                    <field name="amount_vat" sum="Total VAT" />
+                                    <field name="total" sum="Total Subtotal" />
+                                    <field name="net_price" sum="Total Net" />
+                                    <field name="currency_id" invisible="1" />
+                                </tree>
+                            </field>
+                            <group class="oe_subtotal_footer oe_right" colspan="2"
+                                name="tax_invoice_total">
+                                <field name="sum_amount_line_vat" nolabel="0" />
+                                <field name="sum_amount_line_non_vat" nolabel="0" />
+                                <field name="sum_amount_vat" nolabel="0" />
+                                <field name="sum_total" nolabel="0"
+                                    class="oe_subtotal_footer_separator" />
+                                <field name="sum_net_price" nolabel="0" />
+                            </group>
+                            <div class="oe_clear" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_account_tax_invoice_tree" model="ir.ui.view">
+        <field name="name">account.tax.invoice.tree</field>
+        <field name="model">account.tax.invoice</field>
+        <field name="arch" type="xml">
+            <tree string="Tax Invoices" decoration-info="tax_invoice_level == 'summary'"
+                decoration-muted="tax_invoice_level == 'line'">
+                <field name="doc_no" />
+                <field name="invoice_date" />
+                <field name="invoice_month" />
+                <field name="partner_id" />
+                <field name="invoice_id" />
+                <field name="sale_order_id" optional="hide" />
+                <field name="tax_invoice_level" />
+                <field name="sum_amount_line_vat" optional="hide" sum="Total VAT Base" />
+                <field name="sum_amount_line_non_vat" optional="hide" sum="Total Non-VAT Base" />
+                <field name="sum_amount_vat" sum="Total VAT" />
+                <field name="sum_net_price" sum="Total Net" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_account_tax_invoice_search" model="ir.ui.view">
+        <field name="name">account.tax.invoice.search</field>
+        <field name="model">account.tax.invoice</field>
+        <field name="arch" type="xml">
+            <search string="Search Tax Invoices">
+                <field name="doc_no" />
+                <field name="partner_id" />
+                <field name="invoice_id" />
+                <field name="sale_order_id" />
+                <field name="invoice_month" />
+                <filter string="Summary Type" name="filter_summary"
+                    domain="[('tax_invoice_level', '=', 'summary')]" />
+                <filter string="Line Type" name="filter_line"
+                    domain="[('tax_invoice_level', '=', 'line')]" />
+                <separator />
+                <filter string="Invoice Date" name="filter_invoice_date" date="invoice_date" />
+                <group expand="0" string="Group By">
+                    <filter string="Partner" name="group_by_partner"
+                        context="{'group_by': 'partner_id'}" />
+                    <filter string="Invoice Month" name="group_by_month"
+                        context="{'group_by': 'invoice_month'}" />
+                    <filter string="Type" name="group_by_type"
+                        context="{'group_by': 'tax_invoice_level'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+
+    <record id="action_account_tax_invoice" model="ir.actions.act_window">
+        <field name="name">Tax Invoices</field>
+        <field name="res_model">account.tax.invoice</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_account_tax_invoice_search" />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No tax invoices found.
+            </p>
+            <p>
+                Tax invoice records are automatically generated when customer invoices (from sales
+                orders) are posted.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_tax_invoice_root"
+        name="Tax Reporting"
+        parent="account.menu_finance_receivables"
+        sequence="100" />
+
+    <menuitem id="menu_account_tax_invoice"
+        name="Tax Invoices"
+        parent="menu_tax_invoice_root"
+        action="action_account_tax_invoice"
+        sequence="10" />
+
+</odoo>

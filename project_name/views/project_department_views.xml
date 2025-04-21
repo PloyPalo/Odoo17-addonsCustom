@@ -5,9 +5,11 @@
         <field name="name">project.department.view.tree</field>
         <field name="model">project.department</field>
         <field name="arch" type="xml">
-            <tree string="Project Departments" editable="top">
+            <tree string="Project Departments">
                 <field name="code"/>
                 <field name="name"/>
+                <field name="active"/>
+                <field name="member_ids" widget="many2many_tags"/>
             </tree>
         </field>
     </record>
@@ -17,12 +19,38 @@
         <field name="name">project.department.view.form</field>
         <field name="model">project.department</field>
         <field name="arch" type="xml">
-            <form string="Project Department">
+           <form string="Department">
                 <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="Department Name"/>
+                        </h1>
+                    </div>
                     <group>
                         <field name="code"/>
-                        <field name="name"/>
+                        <field name="active"/>
+                        <field name="member_ids" widget="many2many_tags"/>
                     </group>
+                    <notebook>
+                        <page string="Task Stages" name="stages">
+                            <field name="stage_ids">
+                                <tree editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="fold"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Task Templates" name="tasks">
+                            <field name="task_template_ids">
+                                <tree editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -37,6 +65,42 @@
             <p class="o_view_nocontent_smiling_face">
                 Create Project Departments
             </p>
+        </field>
+    </record>
+
+    <!-- Department Search View -->
+    <record id="view_project_department_search" model="ir.ui.view">
+        <field name="name">project.department.search</field>
+        <field name="model">project.department</field>
+        <field name="arch" type="xml">
+            <search string="Search Departments">
+                <field name="name"/>
+                <field name="code"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Task Template Form View -->
+    <record id="view_project_department_task_template_form" model="ir.ui.view">
+        <field name="name">project.department.task.template.form</field>
+        <field name="model">project.department.task.template</field>
+        <field name="arch" type="xml">
+            <form string="Task Template">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="department_id"/>
+                        <field name="sequence"/>
+                        <field name="active"/>
+                    </group>
+                    <notebook>
+                        <page string="Description" name="description">
+                            <field name="description" placeholder="Task description..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
         </field>
     </record>
 </odoo>

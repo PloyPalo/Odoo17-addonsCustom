@@ -20,8 +20,8 @@
             <field name="model">res.subdistrict</field>
             <field name="arch" type="xml">
                 <tree string="Subdistricts" editable="top">
-                    <field name="code"/>
                     <field name="name"/>
+                    <field name="code"/>
                     <field name="district_id"/>
                     <field name="zip_code"/>
                 </tree>

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <!-- Master Data for Departments -->
-    <record id="department_sd" model="project.department">
-        <field name="name">Sales Department</field>
-        <field name="code">SD</field>
-    </record>
-    <record id="department_rd" model="project.department">
-        <field name="name">Research and Development</field>
-        <field name="code">RD</field>
-    </record>
+    <data noupdate="1">
+        <record id="department_sd" model="project.department">
+            <field name="name">Sales Department</field>
+            <field name="code">SD</field>
+        </record>
+        <record id="department_rd" model="project.department">
+            <field name="name">Research and Development</field>
+            <field name="code">RD</field>
+        </record>
+    </data>
 </odoo>

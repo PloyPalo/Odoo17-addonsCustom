@@ -1,6 +1,5 @@
 from odoo import fields, models
 
-
 class ResUsers(models.Model):
     """
     This model extends the 'res.users' model to include a selection field that

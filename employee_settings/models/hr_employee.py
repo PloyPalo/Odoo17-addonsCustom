@@ -44,44 +44,44 @@ class HrEmployeeInherit(models.Model):
         # private_country_id 
         # private_state_id
     
-    private_district_id = fields.Many2one('res.district', string="District")
-    private_subdistrict_id = fields.Many2one('res.subdistrict', string="Sub District")
+    # private_district_id = fields.Many2one('res.district', string="District")
+    # private_subdistrict_id = fields.Many2one('res.subdistrict', string="Sub District")
     
-    private_house_no = fields.Char(string="House No", required=False)
-    private_moo = fields.Char(string="Moo", required=False)
-    private_villa = fields.Char(string="Villa", required=False)
-    private_alley = fields.Char(string="Alley", required=False)
-    private_sub_alley = fields.Char(string="Sub", required=False)
-    private_building = fields.Char(string="Building", required=False)
-    private_floor = fields.Char(string="Floor", required=False)
-    private_room_no = fields.Char(string="Room No", required=False)
+    # private_house_no = fields.Char(string="House No", required=False)
+    # private_moo = fields.Char(string="Moo", required=False)
+    # private_villa = fields.Char(string="Villa", required=False)
+    # private_alley = fields.Char(string="Alley", required=False)
+    # private_sub_alley = fields.Char(string="Sub", required=False)
+    # private_building = fields.Char(string="Building", required=False)
+    # private_floor = fields.Char(string="Floor", required=False)
+    # private_room_no = fields.Char(string="Room No", required=False)
     
     
-    @api.onchange('private_subdistrict_id')
-    def _onchange_subdistrict_id(self):
-        """Update zip code when subdistrict changes"""
-        if self.private_subdistrict_id:
-            self.private_zip = self.private_subdistrict_id.zip_code
-        else:
-            self.private_zip = False
+    # @api.onchange('private_subdistrict_id')
+    # def _onchange_subdistrict_id(self):
+    #     """Update zip code when subdistrict changes"""
+    #     if self.private_subdistrict_id:
+    #         self.private_zip = self.private_subdistrict_id.zip_code
+    #     else:
+    #         self.private_zip = False
 
-    @api.onchange('private_country_id')
-    def _onchange_country_id(self):
-        if self.private_country_id:
-            self.private_state_id = False
-            self.private_district_id = False
-            self.private_subdistrict_id = False
-            self.private_zip = False 
+    # @api.onchange('private_country_id')
+    # def _onchange_country_id(self):
+    #     if self.private_country_id:
+    #         self.private_state_id = False
+    #         self.private_district_id = False
+    #         self.private_subdistrict_id = False
+    #         self.private_zip = False 
             
-    @api.onchange('private_state_id')
-    def _onchange_state_id(self):
-        if self.private_state_id:
-            self.private_district_id = False
-            self.private_subdistrict_id = False
-            self.private_zip = False 
+    # @api.onchange('private_state_id')
+    # def _onchange_state_id(self):
+    #     if self.private_state_id:
+    #         self.private_district_id = False
+    #         self.private_subdistrict_id = False
+    #         self.private_zip = False 
             
-    @api.onchange('private_district_id')
-    def _onchange_district_id(self):
-        if self.private_district_id:
-            self.private_subdistrict_id = False
-            self.private_zip = False 
+    # @api.onchange('private_district_id')
+    # def _onchange_district_id(self):
+    #     if self.private_district_id:
+    #         self.private_subdistrict_id = False
+    #         self.private_zip = False 

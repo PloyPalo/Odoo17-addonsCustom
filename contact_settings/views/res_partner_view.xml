@@ -17,12 +17,30 @@
         </field>
     </record>
 
+    <record id="view_partner_form_company_type_placeholder" model="ir.ui.view">
+        <field name="name">res.partner.form.company.type.placeholder</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Find and replace the partner_company_type_id field -->
+            <xpath expr="//field[@name='partner_company_type_id']" position="replace">
+                <field name="partner_company_type_id" 
+                    placeholder="Company Type" 
+                    options="{&quot;no_open&quot;: True}" 
+                    invisible="is_company == False" 
+                    can_create="True" 
+                    can_write="True" 
+                    field_id="partner_company_type_id_0"/>
+            </xpath>
+        </field>
+    </record>
+
     <record id="view_partner_form" model="ir.ui.view">
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="partner_firstname.view_partner_form"/>
         <field name="arch" type="xml">
             <!-- Name fields section -->
-            <xpath expr="//h1" position="replace">
+            <!-- <xpath expr="//h1" position="replace">
                 <h1>
                     <div class="d-flex">
                         <field name="title" 
@@ -33,24 +51,21 @@
                         <field name="name" readonly="1"/>
                     </div>
                 </h1>
-            </xpath>
+            </xpath> -->
 
             <xpath expr="//div[hasclass('oe_edit_only')]//field[@name='firstname']" position="after">
                 <field name="lastname" position="move"/>
             </xpath>
 
             <xpath expr="//field[@name='name']" position="attributes">
-                <attribute name="readonly">1</attribute>
+                <attribute name="readonly">not is_company</attribute>
             </xpath>
 
             <xpath expr="//h1//field[@name='name']/.." position="after">
-                <div class="oe_edit_only" invisible="not is_company">
-                    <field 
-                        name="name_company" 
-                        placeholder="Company name"
-                        required="is_company"
-                        invisible="not is_company"
-                    />
+                <div class="d-flex mt-2" invisible="not is_company">
+                    <div invisible="not is_company">
+                        <field name="office_type" widget="radio" options="{'horizontal': true}"/>
+                    </div>
                 </div>
             </xpath>
 
@@ -104,7 +119,7 @@
                             <field name="sub_alley" placeholder="Sub Alley" class="o_address_suballey"/>
                         </div>
                         <div class="col-6">
-                            <field name="street" placeholder="Street" class="o_address_street"/> 
+                            <field name="street_name" placeholder="Street" class="o_address_street"/> 
                         </div>
                     </div>
 
@@ -129,6 +144,7 @@
 
                     <!-- Hidden fields -->
                     <field name="street2" invisible="1"/>
+                    <field name="street" invisible="1"/>
                     <field name="city" invisible="1"/>
                 </div>
             </xpath>
@@ -141,15 +157,29 @@
 
             <!-- Branch field section -->
             <xpath expr="//field[@name='category_id']" position="after">
-                <field name="branch" string="Branch" placeholder="Branch, e.g., 00000"/>
+                 <field name="branch" 
+                    string="Branch" 
+                    placeholder="Branch, e.g., 00000"
+                    invisible="not is_company or office_type == 'head_office'" 
+                    required="is_company and office_type == 'branch'"/>
             </xpath>
 
             <!-- Invisible Title Field -->
-            <xpath expr="//field[@name='website']/following::field[@name='title']" position="attributes">
+            <!-- <xpath expr="//field[@name='website']/following::field[@name='title']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath> -->
+
+            <!-- Contact & Address Tab -->
+            <xpath expr="//group//group//field[@name='lastname']" position="attributes">
+                <attribute name="readonly">1</attribute>
+                <attribute name="force_save">1</attribute>
                 <attribute name="invisible">1</attribute>
             </xpath>
 
-             <!-- Contact & Address Tab -->
+            <xpath expr="//group//group//field[@name='firstname']" position="after">
+                <field name="lastname"/>
+            </xpath> 
+            
             <xpath expr="//div[@class='o_address_format'][@name='div_address']" position="replace">
                 <div class="o_address_format" name="div_address">
                     <div class="row">
@@ -193,7 +223,7 @@
                             <field name="sub_alley" placeholder="Sub Alley" class="o_address_suballey"/>
                         </div>
                         <div class="col-6">
-                            <field name="street" placeholder="Street" class="o_address_street"/> 
+                            <field name="street_name" placeholder="Street" class="o_address_street"/> 
                         </div>
                     </div>
 
@@ -228,6 +258,7 @@
                     </div>
                     
                     <!-- Hidden fields -->
+                    <field name="street" invisible="1"/>
                     <field name="street2" invisible="1"/>
                     <field name="city" invisible="1"/>
                 </div>

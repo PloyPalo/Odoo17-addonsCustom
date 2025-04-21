@@ -1,18 +1,21 @@
 {
     "name": "Standard Cost",
     "version": "17.0.1.0.0",
-    "author": "Light up Total Solution Public Company Limited",
-    "website": "https://www.lightuptotal.co.th/",
-    "category": "Product Customization",
+    "author": "Palo Dev",
+    "category": "Inventory/Inventory",
+    "summary": "Adds standard cost calculation and history tracking to products",
+    "description": """
+        This module adds standard cost functionality to products with the following features:
+        - Standard cost calculation (percentage or fixed)
+        - History tracking of standard cost changes
+        - User tracking for cost updates
+    """,
     "license": "LGPL-3",
-    "icon": "web/static/lts/icon.png",
-    "depends": [
-        "product",
-        "sale_management",
-    ],
+    "depends": ["product", "stock", "account"],
     "data": [
         "security/ir.model.access.csv",
         "views/product_template_general.xml",  
+        "views/standard_cost_history.xml",
     ],
     "assets": {},
     "installable": True,

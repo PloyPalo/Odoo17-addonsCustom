@@ -1,10 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <!-- Wizard Form View -->
     <record id="view_standard_cost_wizard_form" model="ir.ui.view">
         <field name="name">standard.cost.wizard.form</field>
         <field name="model">standard.cost.wizard</field>
         <field name="arch" type="xml">
-            <form string="Calculate Standard Cost">
+            <form>
+                <field name="product_tmpl_id" invisible="1"/>
+                <field name="history_value" invisible="1"/>
                 <group>
                     <field name="std_cost_cal_type" widget="radio"/>
                     <label for="std_cost_cal_value" string="Standard Cost Calculate"/>
@@ -25,7 +28,6 @@
     <!-- Wizard Action -->
     <record id="action_standard_cost_wizard" model="ir.actions.act_window">
         <field name="name">Calculate Standard Cost</field>
-        <field name="type">ir.actions.act_window</field>
         <field name="res_model">standard.cost.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
@@ -40,14 +42,21 @@
             <xpath expr="//div[@name='standard_price_uom']" position="after">
                 <label for="std_cost" string="Standard Cost"/>
                 <div name="std_costing" class="o_row">
-                    <field name="std_cost" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    <field name="std_cost" readonly="1" widget="monetary" style="max-width: 100px;" options="{'currency_field': 'currency_id'}"/>
                     <button name="%(action_standard_cost_wizard)d" 
-                            string="Calculate" 
                             type="action" 
                             class="oe_link"
+                            icon="fa-calculator"
+                            title="Calculate Standard Cost"
                             context="{'default_product_tmpl_id': active_id}"/>
                     <field name="std_cost_cal_type" invisible="1"/>
                     <field name="std_cost_cal_val" invisible="1"/>
+                    <button name="action_view_std_cost_history" 
+                        type="object" 
+                        class="oe_link"
+                        icon="fa-history"
+                        title="View History"
+                        visibility_condition="not std_cost_history_ids.is_empty()"/>
                 </div>
             </xpath>
         </field>

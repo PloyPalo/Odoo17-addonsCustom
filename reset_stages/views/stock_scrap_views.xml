@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="stock_scrap_form_view_inherit" model="ir.ui.view">
+        <field name="name">stock.scrap.form.inherit</field>
+        <field name="model">stock.scrap</field>
+        <field name="inherit_id" ref="stock.stock_scrap_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[@name='action_validate']" position="after">
+                <button name="action_reset_to_draft" string="Reset to Draft" type="object"
+                        class="oe_highlight" invisible="state != 'done'" data-hotkey="r"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

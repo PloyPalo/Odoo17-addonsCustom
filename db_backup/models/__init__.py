@@ -3,4 +3,4 @@ from . import db_restore
 from . import db_download
 import logging
 _logger = logging.getLogger(__name__)
-_logger.setLevel(logging.DEBUG)
+_logger.setLevel(logging.WARNING)

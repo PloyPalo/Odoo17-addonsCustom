@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_move_form_inherit_tax_invoice" model="ir.ui.view">
+        <field name="name">account.move.form.inherit.tax.invoice</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//group[@id='header_right_group']" position="inside">
+                <field name="invoice_type" readonly="1" force_save="1"/>
+            </xpath>
+
+            <xpath expr="//notebook" position="inside">
+                <page string="Tax Invoice" name="tax_invoice_page"
+                      invisible="move_type not in ('out_invoice', 'out_refund')">
+                    <field name="tax_invoice_ids" readonly="1">
+                         <tree string="Tax Invoices" decoration-info="tax_invoice_level == 'summary'" decoration-muted="tax_invoice_level == 'line'">
+                            <field name="doc_no"/>
+                            <field name="invoice_date"/>
+                            <field name="partner_id"/>
+                            <field name="tax_invoice_level"/>
+                            <field name="sum_net_price" sum="Total Net Price"/>
+                            <field name="currency_id" invisible="1"/>
+                        </tree>
+                        </field>
+                     <group>
+                         <p class="text-muted">
+                             Tax invoice data is generated automatically when the invoice is posted, based on the configuration in Accounting settings.
+                         </p>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

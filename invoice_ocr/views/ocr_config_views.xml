@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ocr_config_form" model="ir.ui.view">
+        <field name="name">invoice.ocr.config.form</field>
+        <field name="model">invoice.ocr.config</field>
+        <field name="arch" type="xml">
+            <form string="OCR Configuration">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="use_external_service"/>
+                        <field name="service_url" attrs="{'invisible': [('use_external_service', '=', False)], 'required': [('use_external_service', '=', True)]}"/>
+                        <field name="api_key" attrs="{'invisible': [('use_external_service', '=', False)], 'required': [('use_external_service', '=', True)]}"/>
+                        <field name="tesseract_path" attrs="{'invisible': [('use_external_service', '=', True)], 'required': [('use_external_service', '=', False)]}"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ocr_config_tree" model="ir.ui.view">
+        <field name="name">invoice.ocr.config.tree</field>
+        <field name="model">invoice.ocr.config</field>
+        <field name="arch" type="xml">
+            <tree string="OCR Configurations">
+                <field name="name"/>
+                <field name="use_external_service"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

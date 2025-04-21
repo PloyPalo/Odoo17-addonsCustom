@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit the project kanban view -->
+    <record id="view_project_kanban_inherit_delete_button" model="ir.ui.view">
+        <field name="name">project.project.kanban.inherit.delete.button</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban"/>
+        <field name="arch" type="xml">
+            <!-- แก้ไข xpath เพื่อเพิ่มปุ่มลบต่อจาก Settings -->
+            <xpath expr="//div[@role='menuitem'][contains(@class, 'col-6')][2]/a[@type='edit']" position="after">
+                <a class="dropdown-item" role="menuitem" type="object" name="action_delete_project" groups="project.group_project_manager">Delete</a>
+            </xpath>
+        </field>
+    </record>
+</odoo>

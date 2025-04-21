@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mail_wizard_invite_form_inherited" model="ir.ui.view">
+        <field name="name">mail.wizard.invite.form.inherited</field>
+        <field name="model">mail.wizard.invite</field>
+        <field name="inherit_id" ref="mail.mail_wizard_invite_form"/>
+        <field name="arch" type="xml">
+            <!-- เพิ่มฟิลด์เลือกแผนกก่อนฟิลด์ partner_ids -->
+            <xpath expr="//field[@name='partner_ids']" position="before">
+                <field name="department_id" options="{'no_create': True, 'no_open': True}"/>
+            </xpath>
+            <xpath expr="//field[@name='partner_ids']" position="attributes">
+                <attribute name="options">{'no_create': True}</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

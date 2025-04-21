@@ -3,20 +3,21 @@
     'version': '17.0.1.0.0',
     'category': 'Project',
     'summary': 'Project Name',
-    'author': 'Light up Total Solution Public Company Limited',
-    'website': 'https://www.lightuptotal.co.th/',
+    'author': 'Palo Dev',
     'license': 'LGPL-3',
-    'icon': 'web/static/lts/icon.png',
     'depends': [
         'base',
         'web',
         'project',
         'documents',
-        'analytic'
+        'analytic',
+        'sale_project'
     ],
     'data': [
         'security/ir.model.access.csv',
         'data/project_department_data.xml',
+        'data/project_department_stage_data.xml',
+        'data/project_department_task_data.xml',
         'data/project_group_data.xml',
         'views/project_department_views.xml',
         'views/project_group_views.xml',
@@ -24,8 +25,15 @@
         'views/project_project_edit_views.xml',
         'views/project_quick_create_views.xml',
         'views/project_menu.xml',
+        'views/project_kanban.xml',
+        'views/project_delete_wizard_views.xml',
+        'views/mail_invite_views.xml',
     ],
-    'assets': {},
+    'assets': {
+        'web.assets_backend': [
+            'project_name/static/src/scss/project_status_colors.scss',
+        ],
+    },
     'installable': True,
     'application': False,
     'auto_install': False,

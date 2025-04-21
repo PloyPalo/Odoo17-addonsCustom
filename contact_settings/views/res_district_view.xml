@@ -20,8 +20,8 @@
             <field name="model">res.district</field>
             <field name="arch" type="xml">
                 <tree string="Districts" editable="top">
-                    <field name="code"/>
                     <field name="name"/>
+                    <field name="code"/>
                     <field name="state_id"/>
                 </tree>
             </field>

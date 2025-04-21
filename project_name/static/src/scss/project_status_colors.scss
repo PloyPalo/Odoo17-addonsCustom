@@ -1,0 +1,126 @@
+/* Override default project status colors */
+
+/* Target both menu and status indicators by directly overriding Odoo's variables */
+.o_status {
+    &[data-status="on_track"] {
+        background-color: #1D92AF !important;
+    }
+    
+    &[data-status="at_risk"] {
+        background-color: #F0AD4E !important;
+    }
+    
+    &[data-status="off_track"] {
+        background-color: #D9534F !important;
+    }
+    
+    &[data-status="on_hold"] {
+        background-color: #808080 !important;
+    }
+    
+    &[data-status="done"] {
+        background-color: #00A651 !important;
+    }
+}
+
+/* Target the status widget and dropdown options */
+.o_field_widget.o_field_project_status {
+    .o_status_bubble {
+        &[data-value="on_track"] {
+            background-color: #1D92AF !important;
+        }
+        
+        &[data-value="at_risk"] {
+            background-color: #F0AD4E !important;
+        }
+        
+        &[data-value="off_track"] {
+            background-color: #D9534F !important;
+        }
+        
+        &[data-value="on_hold"] {
+            background-color: #808080 !important;
+        }
+        
+        &[data-value="done"] {
+            background-color: #00A651 !important;
+        }
+    }
+}
+
+/* Target kanban cards status indicators */
+.o_kanban_record {
+    .o_status_bubble {
+        &[data-status="on_track"] {
+            background-color: #1D92AF !important;
+        }
+        
+        &[data-status="at_risk"] {
+            background-color: #F0AD4E !important;
+        }
+        
+        &[data-status="off_track"] {
+            background-color: #D9534F !important;
+        }
+        
+        &[data-status="on_hold"] {
+            background-color: #808080 !important;
+        }
+        
+        &[data-status="done"] {
+            background-color: #00A651 !important;
+        }
+    }
+}
+
+/* Target the status in the dropdown menu */
+.o_project_status_selection_dropdown {
+    .dropdown-item {
+        .o_status_bubble {
+            &[data-status="on_track"] {
+                background-color: #1D92AF !important;
+            }
+            
+            &[data-status="at_risk"] {
+                background-color: #F0AD4E !important;
+            }
+            
+            &[data-status="off_track"] {
+                background-color: #D9534F !important;
+            }
+            
+            &[data-status="on_hold"] {
+                background-color: #808080 !important;
+            }
+            
+            &[data-status="done"] {
+                background-color: #00A651 !important;
+            }
+        }
+    }
+}
+
+/* Directly override the status colors in the project card header */
+.o_project_status {
+    .o_status {
+        &[data-status="on_track"] {
+            background-color: #1D92AF !important;
+        }
+        
+        &[data-status="at_risk"] {
+            background-color: #F0AD4E !important;
+        }
+        
+        &[data-status="off_track"] {
+            background-color: #D9534F !important;
+        }
+        
+        &[data-status="on_hold"] {
+            background-color: #808080 !important;
+        }
+        
+        &[data-status="done"] {
+            background-color: #00A651 !important;
+        }
+    }
+}

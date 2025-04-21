@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright © 2024 Light Up Total Solution Public Company Limited -->
 <odoo>
     <record id="view_employee_form_inherit_name_th" model="ir.ui.view">
         <field name="name">hr.employee.form.inherit.name.th</field>

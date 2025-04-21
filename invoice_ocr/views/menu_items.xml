@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_ocr_root" 
+              name="OCR"
+              parent="account.menu_finance_configuration"
+              sequence="100"/>
+              
+    <record id="action_ocr_config" model="ir.actions.act_window">
+        <field name="name">OCR Configuration</field>
+        <field name="res_model">invoice.ocr.config</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <menuitem id="menu_ocr_config"
+              name="OCR Configuration"
+              parent="menu_ocr_root"
+              action="action_ocr_config"
+              sequence="10"/>
+</odoo>

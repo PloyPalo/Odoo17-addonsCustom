@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Sales Department Stages -->
+        <record id="sales_stage_todo" model="project.department.stage">
+            <field name="name">To do</field>
+            <field name="department_id" ref="department_sd"/>
+            <field name="sequence">10</field>
+        </record>
+        <record id="sales_stage_assign_work" model="project.department.stage">
+            <field name="name">Assign work</field>
+            <field name="department_id" ref="department_sd"/>
+            <field name="sequence">20</field>
+        </record>
+        <record id="sales_stage_in_progress" model="project.department.stage">
+            <field name="name">In progress</field>
+            <field name="department_id" ref="department_sd"/>
+            <field name="sequence">30</field>
+        </record>
+        <record id="sales_stage_submit_work" model="project.department.stage">
+            <field name="name">Submit work</field>
+            <field name="department_id" ref="department_sd"/>
+            <field name="sequence">40</field>
+        </record>
+        <record id="sales_stage_done" model="project.department.stage">
+            <field name="name">Done</field>
+            <field name="department_id" ref="department_sd"/>
+            <field name="sequence">50</field>
+            <field name="fold">True</field>
+        </record>
+        <record id="sales_stage_cancel" model="project.department.stage">
+            <field name="name">Cancel</field>
+            <field name="department_id" ref="department_sd"/>
+            <field name="sequence">60</field>
+            <field name="fold">True</field>
+        </record>
+        
+        <!-- R&D Department Stages -->
+        <record id="rnd_stage_backlog" model="project.department.stage">
+            <field name="name">Backlog</field>
+            <field name="department_id" ref="department_rd"/>
+            <field name="sequence">10</field>
+        </record>
+        <record id="rnd_stage_assigned" model="project.department.stage">
+            <field name="name">Assigned</field>
+            <field name="department_id" ref="department_rd"/>
+            <field name="sequence">20</field>
+        </record>
+        <record id="rnd_stage_in_progress" model="project.department.stage">
+            <field name="name">In Progress</field>
+            <field name="department_id" ref="department_rd"/>
+            <field name="sequence">30</field>
+        </record>
+        <record id="rnd_stage_done" model="project.department.stage">
+            <field name="name">Done</field>
+            <field name="department_id" ref="department_rd"/>
+            <field name="sequence">40</field>
+            <field name="fold">True</field>
+        </record>
+    </data>
+</odoo>

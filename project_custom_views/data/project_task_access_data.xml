@@ -7,7 +7,7 @@
     </record>
     <record id="clevel_project_task_access"
             model="project.task.access">
-        <field name="name">C-Level</field>
+        <field name="name">Manager Director</field>
         <field name="is_admin">True</field>
     </record>
     <record id="sales_project_task_access"

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View สำหรับจัดการกลุ่ม -->
+    <record id="view_res_groups_form_design_manager" model="ir.ui.view">
+        <field name="name">res.groups.form.design.manager</field>
+        <field name="model">res.groups</field>
+        <field name="arch" type="xml">
+            <form string="Design Manager Group Management">
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="category_id" readonly="1"/>
+                        <field name="comment" readonly="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Users" name="users">
+                            <field name="users" widget="many2many_tags"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View สำหรับแสดงรายการกลุ่ม -->
+    <record id="view_res_groups_tree_design_manager" model="ir.ui.view">
+        <field name="name">res.groups.tree.design.manager</field>
+        <field name="model">res.groups</field>
+        <field name="arch" type="xml">
+            <tree string="Design Manager Groups">
+                <field name="name"/>
+                <field name="category_id"/>
+                <field name="users"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View สำหรับค้นหากลุ่ม -->
+    <record id="view_res_groups_search_design_manager" model="ir.ui.view">
+        <field name="name">res.groups.search.design.manager</field>
+        <field name="model">res.groups</field>
+        <field name="arch" type="xml">
+            <search string="Design Manager Groups">
+                <field name="name"/>
+                <field name="category_id"/>
+                <field name="users"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action สำหรับเปิดหน้าจอจัดการกลุ่ม -->
+    <record id="action_design_manager_groups" model="ir.actions.act_window">
+        <field name="name">Design Manager Groups</field>
+        <field name="res_model">res.groups</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('name', '=', 'Design Manager Group')]</field>
+        <field name="context">{}</field>
+        <field name="view_id" ref="view_res_groups_tree_design_manager"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                คลิกเพื่อเพิ่มผู้ใช้ในกลุ่ม Design Manager
+            </p>
+            <p>
+                กลุ่มนี้จะจำกัดการแก้ไขเฉพาะ Chatter fields และ Activity fields เท่านั้น
+            </p>
+        </field>
+    </record>
+
+    <!-- เพิ่ม Menu สำหรับเข้าถึงหน้าจัดการกลุ่ม -->
+    <menuitem id="menu_design_manager_groups"
+              name="Design Manager Groups"
+              parent="project.menu_project_config"
+              action="action_design_manager_groups"
+              sequence="30"/>
+</odoo>
